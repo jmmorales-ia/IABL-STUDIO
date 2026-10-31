@@ -1,7 +1,7 @@
 // Lee las visualizaciones de la rejilla de reels de un perfil de Instagram (el tuyo o el de un referente).
 // Solo lee: no hace clic en nada ni escribe. Se pega con la herramienta de JavaScript de Claude in Chrome en
 // https://www.instagram.com/<cuenta>/reels/ y devuelve una línea por reel: «<código> <vistas>», de más a menos.
-// Guárdalo en vistas.txt para formula-estudiar o para medir tus vídeos contra tu mediana.
+// Guárdalo en vistas.txt para iabl-estudiar o para medir tus vídeos contra tu mediana.
 // La rejilla se va montando y desmontando al bajar: por eso se recoge mientras se baja.
 (async () => {
   const vistos = {};

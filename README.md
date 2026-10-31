@@ -46,7 +46,7 @@ Después, la cadena:
 
 ```
 .claude/skills/     los agentes: empezar, guion, edicion, subida, pruebas
-herramientas/       el código: formula (corte, gráficos, render, portada, música, copias), guion (comprobador)…
+herramientas/       el código: iabl (corte, gráficos, render, portada, música, copias), guion (comprobador)…
 marca/              lo tuyo: marca.json, voz, referentes, estilo, música, lecciones
 ejemplo/guion.html  un guion de edición con las piezas principales
 videos/             tus clips y lo que sale (no se sube a git)
@@ -60,9 +60,8 @@ videos/             tus clips y lo que sale (no se sube a git)
 [Simple Icons](https://simpleicons.org), [Lucide](https://lucide.dev) y las letras de
 [Fontsource](https://fontsource.org) (licencia OFL).
 
-## Origen y licencia
+## Licencia
 
-IABL Studio parte de [La Fórmula](https://github.com/gonzalolopezgarcia/la-formula) de Gonzalo López (licencia
-MIT). José Manuel Morales lo adapta y lo amplía para IA Business Lab. Mantiene el aviso de copyright original.
+IABL Studio es de José Manuel Morales, para IA Business Lab.
 
 MIT. Úsalo, cámbialo y hazlo tuyo, conservando el fichero `LICENSE`.

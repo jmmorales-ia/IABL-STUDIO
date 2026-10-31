@@ -3,18 +3,18 @@
 abajo), «clip» (el clip de otro arriba y tú debajo escuchando; luego tú a pantalla entera) y «vlog» (un día de tu vida,
 tu voz encima y una palabra cada vez). Todos se renderizan con HyperFrames.
 
-  formula preparar NOMBRE   junta los clips, quita silencios y transcribe     → base.mp4, frases.txt
+  iabl preparar NOMBRE   junta los clips, quita silencios y transcribe     → base.mp4, frases.txt
                             con --piezas, tres ganchos y dos cuerpos: hasta seis vídeos (piezas.py); con un
                             cuerpo, --cuerpos hace otros dos de sus frases (recortado o en otro orden)
-  formula vlog NOMBRE --clips CARPETA | --montar | --voz FICHERO   estilo vlog (vlog.py)
-  formula clip NOMBRE URL   estilo clip: el vídeo de otro, transcrito; con --trozos, cortado → clip.mp4
-  formula armar NOMBRE      guion.html + subtítulos                            → index.html (y lo valida)
-  formula foto NOMBRE 3.2 8 fotogramas para mirarlos antes de renderizar (sin segundos: uno cada 0,5 s)
-  formula captura NOMBRE URL FICHERO   la captura de una web para ponerla en pantalla → capturas/FICHERO.png
-  formula musica NOMBRE TIPO   la canción de ese tipo que lleva más tiempo sin sonar  → musica.wav
-  formula render NOMBRE     el vídeo final y su portada en videos/salida (--borrador: rápido, para ver el ritmo)
-  formula portada NOMBRE    solo la portada: el gancho sobre un fotograma con los ojos abiertos
-  formula pruebas NOMBRE --hashtags "…"   5 copias de prueba, una al día; grabado en piezas, cada una otro vídeo
+  iabl vlog NOMBRE --clips CARPETA | --montar | --voz FICHERO   estilo vlog (vlog.py)
+  iabl clip NOMBRE URL   estilo clip: el vídeo de otro, transcrito; con --trozos, cortado → clip.mp4
+  iabl armar NOMBRE      guion.html + subtítulos                            → index.html (y lo valida)
+  iabl foto NOMBRE 3.2 8 fotogramas para mirarlos antes de renderizar (sin segundos: uno cada 0,5 s)
+  iabl captura NOMBRE URL FICHERO   la captura de una web para ponerla en pantalla → capturas/FICHERO.png
+  iabl musica NOMBRE TIPO   la canción de ese tipo que lleva más tiempo sin sonar  → musica.wav
+  iabl render NOMBRE     el vídeo final y su portada en videos/salida (--borrador: rápido, para ver el ritmo)
+  iabl portada NOMBRE    solo la portada: el gancho sobre un fotograma con los ojos abiertos
+  iabl pruebas NOMBRE --hashtags "…"   5 copias de prueba, una al día; grabado en piezas, cada una otro vídeo
                             (otro gancho y otro cuerpo)   → videos/salida/pruebas/
 
 Ver .claude/skills/edicion/SKILL.md.
@@ -103,7 +103,7 @@ def escribir_frases(palabras, dir_):
 
 
 def desfase_de(dir_):
-    """Lo que dura el clip de otro que va delante (estilo clip, `formula clip`); 0 si no hay."""
+    """Lo que dura el clip de otro que va delante (estilo clip, `iabl clip`); 0 si no hay."""
     medidas = dir_ / "medidas.json"
     return json.loads(medidas.read_text()).get("clip", 0.0) if medidas.exists() else 0.0
 
@@ -239,7 +239,7 @@ def clip(args):
         p["n"] = n
     (dir_ / "fuente.txt").write_text(frases_de(palabras), encoding="utf-8")
     if not args.trozos:
-        return print(f"  {dir_ / 'fuente.txt'}\n  {dir_ / 'fuente.jpg'}\nAhora: formula clip {args.nombre} {args.fuente} "
+        return print(f"  {dir_ / 'fuente.txt'}\n  {dir_ / 'fuente.jpg'}\nAhora: iabl clip {args.nombre} {args.fuente} "
                      '--trozos "4.2-8.9,10.5-11.9" (segundos de fuente.txt)')
 
     # Cada trozo por separado: si no, dos trozos seguidos se juntan con lo que hay entre ellos
@@ -515,9 +515,9 @@ def avisos(guion, bloques, dur, dir_, aj):
         lista.append(f"estilo {aj['estilo']} sin <!-- claves: … -->: ninguna palabra sale "
                      + ("en naranja en la traducción" if aj["estilo"] == "clip" else "grande en la costura"))
     if aj["estilo"] == "clip" and not desde:
-        lista.append("estilo clip sin clip: falta `formula clip NOMBRE URL --trozos …`")
+        lista.append("estilo clip sin clip: falta `iabl clip NOMBRE URL --trozos …`")
     if desde and not (dir_ / "reaccion.mp4").exists():
-        lista.append("falta tu toma escuchando el clip (`formula clip … --reaccion FICHERO`): abajo no hay nada")
+        lista.append("falta tu toma escuchando el clip (`iabl clip … --reaccion FICHERO`): abajo no hay nada")
     if partida_:   # el panel vacío se ve roto, aunque sea una décima
         lista += [f"de {b:.2f} a {a2:.2f} s el panel se queda vacío: el bloque de {a:.1f} s, hasta {a2:.2f}"
                   for (a, b, _), (a2, _, _) in zip(beats, beats[1:]) if 0.01 < a2 - b]
@@ -627,7 +627,7 @@ def construir(nombre):
         sonidos.mezclar(suena, dur, dir_ / "sonidos.wav", float(aj["sonido"]))
     pista = (f'<audio id="sonidos" class="clip" src="sonidos.wav" data-start="0" data-duration="{dur:.3f}" '
              f'data-track-index="4" data-volume="1"></audio>') if suena else ""
-    if aj.get("musica"):    # «musica=musica.wav»: ya cortada, con su volumen y sus fundidos (formula musica)
+    if aj.get("musica"):    # «musica=musica.wav»: ya cortada, con su volumen y sus fundidos (iabl musica)
         pista += (f'<audio id="musica" class="clip" src="{aj["musica"]}" data-start="0" data-duration="{dur:.3f}" '
                   f'data-track-index="5" data-volume="1"></audio>')
     guion, bloques = poner_tiempos(poner_iconos(guion), dur)
@@ -671,7 +671,7 @@ def construir(nombre):
 </style>
 </head>
 <body>
-<div id="root" data-composition-id="formula" data-start="0" data-width="1080" data-height="1920" data-duration="{dur:.3f}">
+<div id="root" data-composition-id="iabl" data-start="0" data-width="1080" data-height="1920" data-duration="{dur:.3f}">
 {videos}
 {pista}
 <div id="velo"></div>
@@ -695,12 +695,12 @@ def vlog(args):
     dir_.mkdir(parents=True, exist_ok=True)
     if args.clips:
         print("Tomas:", *dia.tomas(dir_, args.clips), sep="\n")
-        print(f"\nMíralas y escribe {dir_ / 'montaje.json'}; luego: formula vlog {args.nombre} --montar")
+        print(f"\nMíralas y escribe {dir_ / 'montaje.json'}; luego: iabl vlog {args.nombre} --montar")
     if args.montar:
         _, para_voz, dur, guia = dia.montar(dir_)
         print(*guia, sep="\n")
         print(f"\n{len(guia)} planos, {dur:.1f} s → {para_voz}\nGraba tu voz encima (CapCut o una nota de voz con el vídeo sonando) y: "
-              f"formula vlog {args.nombre} --voz <fichero>")
+              f"iabl vlog {args.nombre} --voz <fichero>")
     if args.voz:
         base, voz, sobra = dia.con_voz(dir_, Path(args.voz).expanduser(), args.desde)
         if sobra > 0.3:
@@ -720,7 +720,7 @@ def vlog(args):
                              '<div class="gancho" data-a="0" data-b="2.6"><span class="dia">Día 1:</span> '
                              'la idea con su palabra en <i class="acento">cursiva</i></div>\n', encoding="utf-8")
         print(f"\nListo: {dur:.1f} s, {len(palabras)} palabras → {dir_ / 'frases.txt'}\n"
-              f"Ahora: el título en guion.html, formula musica {args.nombre} vlog, formula armar, formula foto")
+              f"Ahora: el título en guion.html, iabl musica {args.nombre} vlog, iabl armar, iabl foto")
 
 
 def armar(args):
@@ -902,10 +902,38 @@ def ojos_abiertos(base, a, b):
     return [(a + i / 10, min(crudo[max(i - 1, 0): i + 2]), float(f[2])) for i, f in enumerate(filas)]
 
 
+def enlazar(destino, origen):
+    """Enlace simbólico; en Windows sin modo desarrollador no se puede: enlace duro y, si tampoco, copia."""
+    try:
+        destino.symlink_to(origen)
+    except OSError:
+        if origen.is_dir():
+            shutil.copytree(origen, destino)
+        else:
+            try:
+                os.link(origen, destino)
+            except OSError:
+                shutil.copy(origen, destino)
+
+
 def mejor_portada(medidas):
     """El fotograma de la portada: ojos abiertos y de frente; entre esos, el más abierto. Si no hay
     ninguno así, el más abierto (y se avisa)."""
     return max(medidas, key=lambda m: (m[1] >= OJOS_ABIERTOS and m[2] == 0, m[1]))
+
+
+def tramo_gancho(guion, a_la_vista=False):
+    """Dónde empieza el gancho (su etiqueta) y dónde acaba: hasta su </div>, no el primero que aparezca, que el
+    gancho en tres tamaños lleva sus líneas en <div> dentro. a_la_vista: sin el de solo-portada."""
+    inicio = re.search(r'<div[^>]*class="gancho' + (r'(?![^"]*solo-portada)' if a_la_vista else "") + r'[^"]*"[^>]*>', guion)
+    if not inicio:
+        return None
+    nivel = 0
+    for etiqueta in re.finditer(r"<(/?)div\b", guion[inicio.start():]):
+        nivel += -1 if etiqueta.group(1) else 1
+        if nivel == 0:
+            break
+    return inicio, guion.index(">", inicio.start() + etiqueta.start()) + 1
 
 
 def hacer_portada(nombre, en=None):
@@ -913,15 +941,16 @@ def hacer_portada(nombre, en=None):
     fotograma del vídeo suele salir a medio parpadeo o con un gráfico en la frente: en el perfil se ve fatal."""
     dir_ = carpeta(nombre)
     guion = (dir_ / "guion.html").read_text(encoding="utf-8")
-    gancho = re.search(r'<div[^>]*class="gancho[^"]*"[^>]*>.*?</div>', guion, flags=re.S)
-    if not gancho:
+    tramo = tramo_gancho(guion)
+    if not tramo:
         sys.exit("No hay gancho en el guion: sin gancho no hay portada.")
-    a, b = (float(re.search(rf'data-{k}="([\d.]+)"', gancho.group(0)).group(1)) for k in "ab")
+    gancho = guion[tramo[0].start(): tramo[1]]
+    a, b = (float(re.search(rf'data-{k}="([\d.]+)"', gancho).group(1)) for k in "ab")
     estilo = leer_ajustes(guion)["estilo"]
     if en is None and not hay_swift():   # sin macOS no hay medidor de ojos: el medio del gancho, y se mira a mano
         en = (a + b) / 2
         print(f"⚠️  sin macOS no se miden los ojos: portada en el {en:.1f} s. Mírala y, si sale con los ojos cerrados, "
-              f"`formula portada {nombre} --en SEGUNDO`")
+              f"`iabl portada {nombre} --en SEGUNDO`")
     if en is None:   # en el estilo clip, mientras está el gancho tú eres la toma de abajo, escuchando
         medidas = ojos_abiertos(dir_ / ("reaccion.mp4" if estilo == "clip" else "base.mp4"), a, b - 0.2)
         en, apertura, giro = mejor_portada(medidas)
@@ -929,7 +958,7 @@ def hacer_portada(nombre, en=None):
               f"{max(m[1] for m in medidas):.2f} en el gancho)")
         if apertura < OJOS_ABIERTOS or giro:
             print(f"⚠️  en todo el gancho no hay un fotograma con los ojos abiertos (mínimo {OJOS_ABIERTOS}) y de frente: "
-                  f"se mira a mano y se elige con `formula portada {nombre} --en SEGUNDO`")
+                  f"se mira a mano y se elige con `iabl portada {nombre} --en SEGUNDO`")
     ajustes = re.search(r"<!--\s*ajustes:.*?-->", guion, flags=re.S)
     solo = f"{nombre}/_portada"   # un vídeo aparte con el gancho y nada más
     shutil.rmtree(carpeta(solo), ignore_errors=True)
@@ -938,7 +967,7 @@ def hacer_portada(nombre, en=None):
         shutil.copy(dir_ / f, carpeta(solo) / f)
     for f in ("base.mp4", "clip.mp4", "reaccion.mp4", "capturas"):   # capturas: el logo del gancho
         if (dir_ / f).exists():
-            (carpeta(solo) / f).symlink_to(dir_ / f)
+            enlazar(carpeta(solo) / f, dir_ / f)
     # sin subtítulos y con los estilos propios del guion (la letra del gancho), para que salga igual que en el vídeo
     ajustes = ajustes.group(0).replace("-->", " subs=no -->") if ajustes else "<!-- ajustes: subs=no -->"
     estilos = "\n".join(re.findall(r"<style>.*?</style>", guion, flags=re.S))
@@ -947,7 +976,7 @@ def hacer_portada(nombre, en=None):
     debajo = [m.group(0).replace("<section", "<section data-queda", 1)
               for m in re.finditer(r'<section[^>]*\bclass="beat[^"]*"[^>]*>.*?</section>', guion, flags=re.S)
               if estilo != "encima" and float(re.search(r'data-a="([\d.]+)"', m.group(0)).group(1)) == a]
-    (carpeta(solo) / "guion.html").write_text("\n".join([ajustes, estilos, gancho.group(0), *debajo]), encoding="utf-8")
+    (carpeta(solo) / "guion.html").write_text("\n".join([ajustes, estilos, gancho, *debajo]), encoding="utf-8")
     construir(solo)
     subprocess.run([str(HF), "snapshot", str(carpeta(solo)), "--at", f"{en:.2f}", "--no-end", "--describe", "false",
                     "-o", str(carpeta(solo) / "fotos")], env=ENTORNO, check=True, capture_output=True)
@@ -1068,8 +1097,14 @@ def dias_de_prueba(n, dia=None):
     copias del mismo vídeo el mismo día se quedan en 0 visualizaciones, y eso puede costarte alcance."""
     import datetime as dt
     from zoneinfo import ZoneInfo
-    ahora = dt.datetime.now(ZoneInfo(config.marca()["zona_horaria"]))
-    primero = dt.date.fromisoformat(dia) if dia else (ahora + dt.timedelta(days=1)).date()
+    if dia:
+        primero = dt.date.fromisoformat(dia)
+    else:
+        try:
+            ahora = dt.datetime.now(ZoneInfo(config.marca()["zona_horaria"]))
+        except Exception:   # Windows sin tzdata: la hora del ordenador
+            ahora = dt.datetime.now()
+        primero = (ahora + dt.timedelta(days=1)).date()
     return [((primero + dt.timedelta(days=k)).isoformat(), HORAS_DE_PRUEBA[0]) for k in range(n)]
 
 
@@ -1087,10 +1122,16 @@ def admite_titular(guion):
 def con_gancho(guion, texto):
     if texto is None:
         return guion
-    texto = texto.replace(" / ", "<br>")
-    if GANCHO_A_LA_VISTA.search(guion):
-        return GANCHO_A_LA_VISTA.sub(lambda m: m.group(1) + texto + m.group(2), guion, count=1)
-    return guion + f'\n<div class="gancho" data-a="0" data-b="2.6">{texto}</div>\n'
+    partes = texto.split(" / ")
+    if tramo := tramo_gancho(guion, a_la_vista=True):
+        inicio, fin = tramo
+        # En tres tamaños, «línea pequeña / frase / LA palabra»: cada una a su sitio
+        if re.search(r'class="[^"]*\btres\b', inicio.group(0)) and len(partes) == 3:
+            dentro = "".join(f'<div class="{c}">{t}</div>' for c, t in zip("kmg", partes))
+        else:
+            dentro = "<br>".join(partes)
+        return guion[:inicio.end()] + dentro + "</div>" + guion[fin:]
+    return guion + f'\n<div class="gancho" data-a="0" data-b="2.6">{"<br>".join(partes)}</div>\n'
 
 
 def pantallas_en(dir_, pedidas):
@@ -1153,14 +1194,15 @@ def pruebas(args):
         carpeta(copia).mkdir()
         for f in dir_.iterdir():   # lo que el guion pueda nombrar (base, capturas, música), enlazado y no copiado
             if f.name not in ("guion.html", "guion-piezas.html", "index.html", "sonidos.wav", "kit", "render.mp4") and not f.name.startswith("_"):
-                (carpeta(copia) / f.name).symlink_to(origen / f.name if f.name in ("base.mp4", "palabras.json", "medidas.json") else f)
+                enlazar(carpeta(copia) / f.name, origen / f.name if f.name in ("base.mp4", "palabras.json", "medidas.json") else f)
         if origen != dir_ and medidas.get("musica"):   # la canción, cortada al largo de esta combinación
             (carpeta(copia) / "musica.wav").unlink(missing_ok=True)
             musica.recortar(carpeta(copia), medidas["musica"])
         espejo = i % 2 == 1   # las impares, con tu cámara en espejo: otro vídeo más para Instagram
         for f in ("base.mp4", "reaccion.mp4") if espejo else ():   # solo tu cámara: el clip de otro, los gráficos y el texto, al derecho
             if (enlace := carpeta(copia) / f).exists():
-                fuente = enlace.resolve()
+                # del original, no del enlace: en Windows suele ser una copia, y se borra en la línea de abajo
+                fuente = (origen if f == "base.mp4" else dir_) / f
                 enlace.unlink()
                 # Lo que la cámara graba con letras (tu pantalla, un cartel) no se da la vuelta: saldría del revés
                 tramos = pantallas_en(origen, args.pantallas) if f == "base.mp4" else []
@@ -1169,8 +1211,10 @@ def pruebas(args):
                                 "-preset", "veryfast", "-crf", "16", "-g", "30", "-keyint_min", "30", "-pix_fmt", "yuv420p",
                                 "-c:a", "copy", str(enlace)], check=True)
         sub_css = f"#root .costura:not(.clave) {{ {subs_[sub_]} }}" if partida_ else f"#root .sub {{ {subs_[sub_]} margin-top:{baja}px; }}"
+        # En caja blanca, la palabra gigante del gancho en tres tamaños (en tu acento) no se lee sin contorno
+        blanca = "\n#root .gancho.tres .g { -webkit-text-stroke: 4px #111; }" if gancho == "caja blanca" else ""
         retoque = (f"<style>\n{sub_css}\n#root .gancho {{ {ganchos_[gancho]} margin-top:{0 if estilo == 'clip' else baja}px; }}"
-                   "\n</style>\n")
+                   f"{blanca}\n</style>\n")
         (carpeta(copia) / "guion.html").write_text(con_gancho((origen / "guion.html").read_text(encoding="utf-8"), titulares[i])
                                                    + "\n" + retoque, encoding="utf-8")
         construir(copia)

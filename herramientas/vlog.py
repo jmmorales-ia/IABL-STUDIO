@@ -1,11 +1,11 @@
 """Estilo «vlog»: un día de tu vida. Mandas los clips del día; aquí se montan sin voz (un plano nuevo cada 1,2
 a 1,8 s); grabas tu voz encima del corte; y aquí van los subtítulos (una palabra cada vez), la música y el título.
 
-  formula vlog NOMBRE --clips CARPETA   una hoja por clip (un fotograma cada «cada» s)   → tomas/, tomas.json
-  formula vlog NOMBRE --montar          los planos de montaje.json, uno tras otro      → corte.mp4, planos.txt
+  iabl vlog NOMBRE --clips CARPETA   una hoja por clip (un fotograma cada «cada» s)   → tomas/, tomas.json
+  iabl vlog NOMBRE --montar          los planos de montaje.json, uno tras otro      → corte.mp4, planos.txt
                                         y videos/salida/NOMBRE-para-la-voz.mp4, para grabar tu voz encima
-  formula vlog NOMBRE --voz FICHERO     tu voz (audio o vídeo) sobre el corte           → base.mp4, voz.wav
-Después, como siempre: formula musica NOMBRE vlog, formula armar, formula foto, formula render.
+  iabl vlog NOMBRE --voz FICHERO     tu voz (audio o vídeo) sobre el corte           → base.mp4, voz.wav
+Después, como siempre: iabl musica NOMBRE vlog, iabl armar, iabl foto, iabl render.
 
 montaje.json: {"planos": [{"toma": 3, "desde": 2.0, "hasta": 3.5, "que": "llego a la oficina"}, …]}
 «sonido»: true deja el sonido de ese plano (tú hablando a cámara); si no, el plano va mudo.

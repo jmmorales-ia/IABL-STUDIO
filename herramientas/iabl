@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Lanza herramientas/formula.py con el Python de herramientas/.venv (lo crea instalar.py).
-# Mac y Linux (.venv/bin) y Windows con Git Bash (.venv/Scripts). En PowerShell o CMD: formula.cmd
+# Lanza herramientas/iabl.py con el Python de herramientas/.venv (lo crea instalar.py).
+# Mac y Linux (.venv/bin) y Windows con Git Bash (.venv/Scripts). En PowerShell o CMD: iabl.cmd
 aqui="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ -x "$aqui/.venv/bin/python" ]; then py="$aqui/.venv/bin/python"; pyd="$aqui/.venv/bin"
 elif [ -x "$aqui/.venv/Scripts/python.exe" ]; then py="$aqui/.venv/Scripts/python.exe"; pyd="$aqui/.venv/Scripts"
 else echo "Primero: python herramientas/instalar.py"; exit 1; fi
 export PATH="$aqui/.bin:$pyd:$PATH"
 export PYTHONUTF8=1
-exec "$py" "$aqui/formula.py" "$@"
+exec "$py" "$aqui/iabl.py" "$@"

@@ -61,7 +61,7 @@ grabar nada:
 Se hacen en /edicion, al preparar: lee `piezas.txt` (cada palabra con su número), decide los tramos y pásalos:
 
 ```bash
-herramientas/formula preparar <nombre> --piezas "A=0,B=13,C=27,1=47,cierre=561" \
+herramientas/iabl preparar <nombre> --piezas "A=0,B=13,C=27,1=47,cierre=561" \
   --cuerpos "2=47-155,165-305,360-456,476-560;3=47-80,148-155,165-198,256-305,360-456,476-526,541-560"
 ```
 
@@ -69,7 +69,7 @@ Cada cuerpo nuevo son los tramos del 1 que dice, **en el orden en que los pones*
 nuevo orden). Cada número es una palabra de `piezas.txt`; uno solo («57») es la frase que empieza ahí. `preparar`
 imprime cuánto dura cada uno y cómo empieza cada tramo: compruébalo antes de seguir. El guion de esos cuerpos sale
 solo del de la pieza 1 (cada bloque con su frase; el de una frase quitada, fuera); **mira los fotogramas de una copia
-de cada cuerpo** (`formula foto`) antes de hacerlas.
+de cada cuerpo** (`iabl foto`) antes de hacerlas.
 
 Si ya se preparó en piezas sin `--cuerpos`, pasa `preparar` otra vez igual pero con él (no transcribe de nuevo) y
 vuelve a `armar`: el reel normal (A1) sale igual.
@@ -98,7 +98,7 @@ solo cambia el titular en pantalla (el `gancho`) sobre el mismo vídeo.
 ## Hacerlas
 
 ```bash
-herramientas/formula pruebas <nombre> --hashtags "#tema1 #tema2 #tema3 #tema4 #tema5"   # --dia AAAA-MM-DD: el día de la primera
+herramientas/iabl pruebas <nombre> --hashtags "#tema1 #tema2 #tema3 #tema4 #tema5"   # --dia AAAA-MM-DD: el día de la primera
 ```
 
 - Cada copia cambia, además del gancho (o el titular): la velocidad (1,03× a 1,10×, la voz sin cambiar de tono), el
@@ -115,7 +115,7 @@ herramientas/formula pruebas <nombre> --hashtags "#tema1 #tema2 #tema3 #tema4 #t
   (el gancho y un subtítulo de cada una) y **`<nombre>-pruebas-horario.txt`, el día y la hora de cada una**.
 - Si se corta, sigue por donde iba: `--desde N --n <las que faltan>`.
 - **Para dejarlas haciéndose solas esta noche** (y que sigan aunque cierres Claude), en Mac:
-  `screen -dmS pruebas zsh -c 'sleep $(( $(date -j -f "%H:%M" 23:00 +%s) - $(date +%s) )); caffeinate -i herramientas/formula pruebas <nombre> --hashtags "…"'`
+  `screen -dmS pruebas zsh -c 'sleep $(( $(date -j -f "%H:%M" 23:00 +%s) - $(date +%s) )); caffeinate -i herramientas/iabl pruebas <nombre> --hashtags "…"'`
 
 🚨 **Mira la hoja antes de subirlas**: texto cortado o encima de la cara, esa copia se arregla en el guion y se rehace.
 
@@ -128,6 +128,8 @@ Con /subida, **cada una en su día y a su hora del horario**, marcando **«Reel 
 - 🚨 **Si no sale en ningún sitio, su cuenta aún no la tiene**: hace falta cuenta profesional (creador o empresa) y,
   con pocos seguidores, Meta puede no darla (una cuenta de ~140 seguidores la tenía bloqueada; con ~4.000, sí).
   Díselo, no renderices copias que no se van a poder subir, y que vuelva a mirar cuando crezca.
+- La web de Instagram y, en algunas cuentas, Meta Business Suite no tienen la opción: entonces solo se puede desde la app
+  del móvil, y la cuenta tiene que tenerla. Míralo antes de renderizar.
 - Mismo cuidado que en /subida con Meta: subirlas a ritmo de persona, una detrás de otra, nunca varias pestañas a la
   vez.
 - 🚨 **Siempre en manual**: que no se comparta sola con tus seguidores si funciona. Es la copia de un reel que ya está en

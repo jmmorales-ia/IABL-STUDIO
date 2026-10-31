@@ -1,7 +1,7 @@
 """Comprueba un guion hablado (hablado.json) contra las reglas de los reels que funcionan: el gancho, el puente,
 la longitud de cada molde, las fuentes de cada cifra, el cierre y la palabra del «comenta X».
 
-Uso: herramientas/formula-guion <carpeta>/hablado.json
+Uso: herramientas/iabl-guion <carpeta>/hablado.json
 Imprime los avisos y sale con 1 si hay alguno. El formato del JSON está en .claude/skills/guion/SKILL.md.
 """
 import json
@@ -65,7 +65,7 @@ def segundos(n: int) -> float:
 
 
 def transcripcion(ruta: str) -> list[str]:
-    """Las frases de `transcript.txt` (formula-estudiar): «[  3.2-  4.3] This tool is called…»."""
+    """Las frases de `transcript.txt` (iabl-estudiar): «[  3.2-  4.3] This tool is called…»."""
     texto = Path(ruta).expanduser().read_text()
     return [m.group(1).strip() for m in re.finditer(r"^\[\s*[\d.]+-\s*[\d.]+\]\s*(.+)$", texto, re.M)]
 

@@ -53,6 +53,8 @@ Lo deciden sus palabras: no preguntes cuál. Un tema más «busca inspiración»
 2. La rejilla de cada cuenta de `marca/referentes.md` en `instagram.com/<cuenta>/reels/`, pegando
    `herramientas/vistas-rejilla.js` con la herramienta de JavaScript: el código y las visualizaciones de cada reel
    y su mediana.
+   Al abrir un reel suelto, el vídeo que se reproduce puede colgar la pestaña: su texto, fecha y comentarios se leen sin
+   tu sesión con `yt-dlp --skip-download --print`, y así se cuida tu cuenta.
 3. **Candidatos**: reels recientes por encima de la mediana de su cuenta, de más a menos. Fuera las noticias
    caducadas, lo que no puede enseñar funcionando y los temas que ya tiene.
 4. **Tres propuestas** en una tabla: número, cuenta y enlace, visualizaciones (y su mediana), de qué va, su gancho
@@ -69,7 +71,7 @@ se junta, se quita ni se añade, y no se aplican las reglas de abajo: ese reel y
    ```bash
    mkdir -p videos/estudio/<código> && herramientas/.venv/bin/yt-dlp -q -o "videos/estudio/<código>/v.%(ext)s" \
      --ffmpeg-location herramientas/.bin "https://www.instagram.com/reel/<código>/"
-   herramientas/formula-estudiar videos/estudio
+   herramientas/iabl-estudiar videos/estudio
    ```
    Deja `transcript.txt` con cada frase y su segundo. Si Whisper parte las frases por la mitad, rehazlo con una
    frase por línea desde `palabras.json`; una de 30 palabras o más se puede partir en la coma donde cambia la
@@ -178,7 +180,7 @@ tres que le das, cada uno engancha por una distinta:
    algo abstracto, una comparación del día a día. Cada palabra técnica, con lo que es en una frase normal.
 6. **Pasa el comprobador** y arregla todo lo que diga (si dejas un aviso a propósito, dile cuál y por qué):
    ```bash
-   herramientas/formula-guion videos/trabajo/<carpeta>/hablado.json
+   herramientas/iabl-guion videos/trabajo/<carpeta>/hablado.json
    ```
 7. **Dáselo para grabar**: en el chat, los tres ganchos (cada uno con su frase 2, el 1 marcado: va en el reel
    normal), luego las tomas numeradas y «Cuerpo 2» al final, todo para grabar en tres clips. Que lo grabe con sus palabras: luego se edita sobre lo que dijo de verdad (`frases.txt`).

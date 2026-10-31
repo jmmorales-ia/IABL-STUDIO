@@ -13,8 +13,8 @@
 window.__trozos = [];
 (() => {
   const inp = document.createElement("input");
-  inp.type = "file"; inp.multiple = true; inp.id = "formula-trozos";
-  inp.setAttribute("aria-label", "formula trozos del video");
+  inp.type = "file"; inp.multiple = true; inp.id = "iabl-trozos";
+  inp.setAttribute("aria-label", "iabl trozos del video");
   inp.style.cssText = "position:fixed;top:4px;left:300px;z-index:99999;width:200px;height:24px;background:#fff";
   inp.addEventListener("change", () => { for (const f of inp.files) window.__trozos.push(f); });
   document.body.appendChild(inp);
@@ -24,7 +24,7 @@ window.__trozos = [];
 window.__assemble = (nombre) => {
   const partes = [...window.__trozos].sort((a, b) => a.name.localeCompare(b.name));
   const file = new File(partes, nombre, { type: "video/mp4" });
-  const tk = [...document.querySelectorAll("input[type=file]")].find((i) => i.id !== "formula-trozos");
+  const tk = [...document.querySelectorAll("input[type=file]")].find((i) => i.id !== "iabl-trozos");
   const dt = new DataTransfer(); dt.items.add(file); tk.files = dt.files;
   tk.dispatchEvent(new Event("change", { bubbles: true }));
   window.__trozos = [];

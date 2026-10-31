@@ -113,13 +113,13 @@ def poner(dir_, tipo=None, cancion=None, entra=0.0):
     """musica.wav en la carpeta del vídeo. Sin tipo ni canción, la lista."""
     cat = catalogo()
     if not cat["canciones"]:
-        raise SystemExit("Aún no tienes canciones: `formula musica --anadir <fichero o enlace> --tipos caso,utilidad`")
+        raise SystemExit("Aún no tienes canciones: `iabl musica --anadir <fichero o enlace> --tipos caso,utilidad`")
     if not (tipo or cancion):
         return print(lista())
     if cancion:
         c = next((c for c in cat["canciones"] if c["id"] == cancion), None)
         if not c:
-            raise SystemExit(f"{cancion}: no está en marca/musica.json. Las que hay: formula musica {dir_.name}")
+            raise SystemExit(f"{cancion}: no está en marca/musica.json. Las que hay: iabl musica {dir_.name}")
     elif tipo not in cat["tipos"]:
         raise SystemExit(f"tipo={tipo}: es {', '.join(cat['tipos'])}")
     else:
@@ -197,7 +197,7 @@ def opciones(dir_, ids, tipo="utilidad"):
     datos = [{"id": c["id"], "titulo": c["titulo"], "artista": c["artista"], "etq": c.get("de_donde", [])} for c in (cat[i] for i in ids)]
     pagina = sal / "index.html"
     pagina.write_text(PAGINA.read_text(encoding="utf-8").replace("/*OPCIONES*/[]", json.dumps(datos, ensure_ascii=False)), encoding="utf-8")
-    print(f"{pagina}\nCon la que elijas: formula musica {dir_.name} {tipo} --cancion <id>")
+    print(f"{pagina}\nCon la que elijas: iabl musica {dir_.name} {tipo} --cancion <id>")
     return pagina
 
 

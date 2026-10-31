@@ -28,7 +28,7 @@ los de `frases.txt`. Un ejemplo con lo principal: `ejemplo/guion.html`.
 | `subs=` | `si`, `claves` (quietos bajo la barbilla, claves en tu acento) o `no` | `si` |
 | `velo=` | De 0 a 0,6: oscurece la franja de arriba si la pared es clara | lo mide `preparar` |
 | `arriba=` | Dónde empieza el titular (nunca menos de 250: arriba tapa Instagram) | 250 |
-| `musica=` | `musica.wav` (la deja `formula musica`) | sin música |
+| `musica=` | `musica.wav` (la deja `iabl musica`) | sin música |
 | `sonido=` / `sonidos=` | Volumen de los efectos / cuáles (ver SKILL.md) | 0.14 / remates |
 | `costura=`, `encuadre=` | «partida» y «clip»: dónde empiezas tú y qué trozo de ti se ve | 1060 / 68 |
 

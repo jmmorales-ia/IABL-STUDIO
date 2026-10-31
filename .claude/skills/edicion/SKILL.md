@@ -55,7 +55,7 @@ Más los que haya creado él, en `marca/estilo.md` → «Mis estilos». Por orde
 
 ## Los pasos
 
-Cada vídeo vive en `videos/trabajo/<nombre>/` (nombre: `AAAA-MM-DD-tema`). El lanzador: `herramientas/formula`.
+Cada vídeo vive en `videos/trabajo/<nombre>/` (nombre: `AAAA-MM-DD-tema`). El lanzador: `herramientas/iabl`.
 
 1. **Los clips**: en `videos/entrada/` o en la carpeta que diga. Con un número delante manda el orden
    («1 IMG_8581.MOV»); si no, la hora de grabación. Si dice que uno va primero, cópialos a otra carpeta con su número.
@@ -66,7 +66,7 @@ Cada vídeo vive en `videos/trabajo/<nombre>/` (nombre: `AAAA-MM-DD-tema`). El l
      Drive del chat solo encuentra ficheros, no puede traerte un vídeo.
 2. **Preparar** (~30 s por cada 25 s de clips):
    ```bash
-   herramientas/formula preparar <nombre> --clips <carpeta> --pista "Claude, Notion"
+   herramientas/iabl preparar <nombre> --clips <carpeta> --pista "Claude, Notion"
    ```
    `--pista`: los nombres propios que dice, para que Whisper los escriba bien. Deja `base.mp4` (cortado, sin
    texto), `frases.txt` (cada palabra con su segundo: de aquí salen todos los tiempos), `palabras.txt` y
@@ -76,7 +76,7 @@ Cada vídeo vive en `videos/trabajo/<nombre>/` (nombre: `AAAA-MM-DD-tema`). El l
      cierre, y el 3 con el cuerpo 2. Lee `crudo.txt` y pasa `preparar` otra vez diciendo dónde empieza cada pieza
      (no transcribe otra vez):
      ```bash
-     herramientas/formula preparar <nombre> --piezas "A=0,B=31,C=58,1=90,cierre=301,2=340"
+     herramientas/iabl preparar <nombre> --piezas "A=0,B=31,C=58,1=90,cierre=301,2=340"
      ```
      **A**, **B** y **C** son los tres ganchos (A, el del reel normal), **1** y **2** los dos cuerpos y **cierre** la
      conclusión, lo que mandas y el «comenta X», grabado una vez. El número es el de la palabra de `crudo.txt` en que
@@ -107,29 +107,29 @@ Cada vídeo vive en `videos/trabajo/<nombre>/` (nombre: `AAAA-MM-DD-tema`). El l
      frases que no sirven a la idea principal del gancho, con su número de `frases.txt`, en la tabla del borrador,
      y quítalas con `--fuera` solo con su sí.
    - Si avisa de un **corte sobre la voz**, quita la frase entera o mueve el corte: se oye el tijeretazo.
-4. **Mira el encuadre**: guion vacío (`<!-- ajustes: sub-y=932 -->`) y `herramientas/formula foto <nombre> 3`.
+4. **Mira el encuadre**: guion vacío (`<!-- ajustes: sub-y=932 -->`) y `herramientas/iabl foto <nombre> 3`.
    Apunta dónde empieza su pelo: el hueco de cada bloque va de 250 px hasta ahí. Si la pared de detrás es
    clara, el `velo` (0 a 0,6) oscurece la franja de arriba; `preparar` lo calcula midiendo.
 5. **Las capturas**, si nombra algo real («Capturas: la prueba», abajo). Antes del guion: un bloque no puede
    prometer una imagen que luego no se consigue.
 6. **Escribe `guion.html`** con las reglas de abajo y las piezas de `piezas.md`. **Y la canción**:
-   `herramientas/formula musica <nombre> <tipo>` y `musica=musica.wav` en la línea de ajustes («La música»).
+   `herramientas/iabl musica <nombre> <tipo>` y `musica=musica.wav` en la línea de ajustes («La música»).
 7. **Monta y mira**:
    ```bash
-   herramientas/formula armar <nombre>        # index.html, sonidos, avisos y la validación de HyperFrames
-   herramientas/formula foto <nombre> 3.9 6.7  # un fotograma por bloque, hacia el final de cada uno
-   herramientas/formula foto <nombre>          # todo el vídeo, uno cada 0,5 s, en hojas de 10
+   herramientas/iabl armar <nombre>        # index.html, sonidos, avisos y la validación de HyperFrames
+   herramientas/iabl foto <nombre> 3.9 6.7  # un fotograma por bloque, hacia el final de cada uno
+   herramientas/iabl foto <nombre>          # todo el vídeo, uno cada 0,5 s, en hojas de 10
    ```
    🚨 **Antes del borrador, todos los fotogramas**: lee cada hoja y arregla lo que se vea mal (texto cortado o
    sobre la cara, un titular que no cambia en 3 s, un logo que no entró, un subtítulo mal oído, algo que entra
    tan tarde que no da tiempo a leerlo). Repite hasta que ninguna hoja tenga nada. Lo que tapa Instagram sale
    en rojo: nada de texto ahí (`--limpia` lo quita para enseñarlo).
-8. **Borrador** (~20 s de render por cada 20 s de vídeo): `herramientas/formula render <nombre> --borrador`. Se abre
+8. **Borrador** (~20 s de render por cada 20 s de vídeo): `herramientas/iabl render <nombre> --borrador`. Se abre
    solo. Saca fotogramas de dos o tres entradas para comprobar que el movimiento cae en la palabra.
 9. **Enséñaselo**: la ruta del borrador y una tabla de bloques (segundo, titular, gráfico). Los sonidos y la
    canción solo los puede juzgar él: pídele que lo vea con sonido. Cada corrección suya va al guion **y a
    `marca/estilo.md`** con su fecha: así el siguiente vídeo ya sale bien.
-10. **Con su visto bueno**: `herramientas/formula render <nombre>` (calidad final, a 10 Mb/s, lo que acepta
+10. **Con su visto bueno**: `herramientas/iabl render <nombre>` (calidad final, a 10 Mb/s, lo que acepta
     Instagram, y su portada `<nombre>.portada.png`). 🚨 **Abre la portada y mírala**: ojos abiertos, nada en la cara
     y el gancho entero. Luego `/subida`.
 
@@ -177,7 +177,7 @@ Lo que delata una edición hecha con IA, y lo que hacemos en su lugar (en todos 
 | Lo que delata a la IA | Lo que hacemos |
 |---|---|
 | Texto animado: subtítulos en píldoras, letras mezcladas, chispitas, botes | Subtítulos quietos y sencillos, de 2 a 4 palabras. Lo hortera solo como chiste, en las palabras que lo nombran (abajo) |
-| Un emoji o un icono de línea en lugar de una idea (🤖, 💰, una bombilla) | **Una imagen de verdad**: el logo, la cara, el meme, el producto. De su fuente (`captura`) o con `herramientas/formula imagen <nombre> "<búsqueda>" <fichero>`, que baja las 6 primeras de una búsqueda de imágenes y deja una hoja numerada para elegir. `data-icono` solo dentro de una app redibujada que lo enseñe |
+| Un emoji o un icono de línea en lugar de una idea (🤖, 💰, una bombilla) | **Una imagen de verdad**: el logo, la cara, el meme, el producto. De su fuente (`captura`) o con `herramientas/iabl imagen <nombre> "<búsqueda>" <fichero>`, que baja las 6 primeras de una búsqueda de imágenes y deja una hoja numerada para elegir. `data-icono` solo dentro de una app redibujada que lo enseñe |
 | Tiempos muertos | Cada pausa de más de 0,12 s se va (`preparar` ya lo hace) |
 | Frases que no sirven al gancho | Si ha soltado el rollo, se le proponen para quitar (paso 3) |
 | Un aviso hortera: degradado, estrellas, «¡¡VAMOOOS!! 🔥», cosas que laten | **Un aviso es la pantalla de una app de verdad** (la notificación del móvil, el chat de Claude, los comentarios de Instagram, Google, Fotos, los conectores de Claude) en tu cristal, arriba. Entra con el movimiento de esa app (la notificación cae) o en un fotograma; solo se mueve lo de dentro, como en la app: el texto que se escribe mientras lo dice, el botón que se pone verde, la barra que se llena |
@@ -224,10 +224,10 @@ pantalla van en silencio y unos 20 efectos caen cada uno en el momento en que la
 Cada reel lleva una canción, de las suyas: `marca/musica.json` (su ficha) y `marca/musica/` (los audios).
 
 ```bash
-herramientas/formula musica <nombre> utilidad          # la de ese tipo que lleva más tiempo sin sonar → musica.wav
-herramientas/formula musica <nombre> utilidad --cancion <id>   # esa
-herramientas/formula musica <nombre> utilidad --opciones "id1,id2,id3"   # una página para elegir
-herramientas/formula musica --anadir <fichero o enlace> --tipos caso,utilidad --titulo "…" --artista "…" --desde 14
+herramientas/iabl musica <nombre> utilidad          # la de ese tipo que lleva más tiempo sin sonar → musica.wav
+herramientas/iabl musica <nombre> utilidad --cancion <id>   # esa
+herramientas/iabl musica <nombre> utilidad --opciones "id1,id2,id3"   # una página para elegir
+herramientas/iabl musica --anadir <fichero o enlace> --tipos caso,utilidad --titulo "…" --artista "…" --desde 14
 ```
 
 - Va a −33 LUFS debajo de su voz (−15) y aplanada: la parte fuerte de la canción no se sale del fondo.
@@ -257,10 +257,10 @@ Cuando nombra algo real (una noticia, una herramienta, sus números), su imagen 
   no se le reconozca; lo que importa de su vídeo, el título o el gráfico, se deja nítido).
 - Sacarlas, con un Chrome sin ventana (el suyo ni se toca):
   ```bash
-  herramientas/formula captura <nombre> <url> anuncio --portada      # la imagen con la que la web se anuncia
-  herramientas/formula captura <nombre> <url> titular --recorte "0,160,640,215"
-  herramientas/formula captura <nombre> <url> tabla --selector "table"
-  herramientas/formula imagen <nombre> "meme de alguien asintiendo" meme   # una imagen real buscada en la web
+  herramientas/iabl captura <nombre> <url> anuncio --portada      # la imagen con la que la web se anuncia
+  herramientas/iabl captura <nombre> <url> titular --recorte "0,160,640,215"
+  herramientas/iabl captura <nombre> <url> tabla --selector "table"
+  herramientas/iabl imagen <nombre> "meme de alguien asintiendo" meme   # una imagen real buscada en la web
   ```
   🚨 Abre y mira cada captura antes de usarla. Si la web no deja (muro de pago, bloqueo), otra fuente o pídesela.
 
@@ -283,7 +283,7 @@ Cuando nombra algo real (una noticia, una herramienta, sus números), su imagen 
 
 ## La portada
 
-`render` la hace solo (`formula portada <nombre>` la repite): mide en cada décima del gancho lo abiertos que
+`render` la hace solo (`iabl portada <nombre>` la repite): mide en cada décima del gancho lo abiertos que
 están sus ojos (macOS) y se queda con el más abierto y de frente, con solo el gancho encima. Fuera de macOS
 elige el medio del gancho: mírala y, si sale con los ojos cerrados, `--en SEGUNDO`. 🚨 Ábrela siempre antes de subir.
 
@@ -310,7 +310,7 @@ cortan, qué suena. Sus colores, letras y adornos, no: se pinta todo con lo suyo
    (`marca/referentes.md`, o su rejilla con `vistas-rejilla.js`). Bájalo sin usar su sesión:
    `herramientas/.venv/bin/yt-dlp -q -o "videos/estudio/<código>/v.%(ext)s" --ffmpeg-location herramientas/.bin <url>`.
 2. **Desmóntalo**: hoja de fotogramas cada 0,5 s (`ffmpeg -i v.mp4 -vf "fps=2,scale=216:384,tile=6x4" hoja-%02d.jpg`)
-   y `herramientas/formula-estudiar videos/estudio` (lo que dice, con sus segundos). Apunta, con cifras:
+   y `herramientas/iabl-estudiar videos/estudio` (lo que dice, con sus segundos). Apunta, con cifras:
    - cada cuánto cambia lo de arriba y qué es (titular, gráfico, captura, B-roll, nada);
    - dónde va el texto, cuántas palabras, y cómo son los subtítulos (tamaño, sitio, si saltan o están quietos);
    - los cortes: cada cuántos segundos, si cambia el plano o hay zoom;
@@ -355,6 +355,15 @@ de tipo `historia`. Su voz manda.
 - Una etiqueta `.mono` suelta sobre una pared con mucho detalle no se lee: dentro de un `.vidrio`.
 - Lo que no está en el kit se escribe en HTML dentro del bloque con su `data-en`, con su `<style>` arriba del
   guion. Si lo usas en un segundo vídeo, pásalo a `herramientas/kit/base.css`.
+
+- 🚨 **Dentro de `.gancho` no funcionan `data-en` ni `data-rueda`**: la cifra se queda en 0. Para una cifra que gira al
+  empezar: el gancho con el texto y, justo después, un `section.beat` con la rueda.
+- **Una portada distinta del gancho que se ve** (estilo `encima`): un primer `.gancho.solo-portada` con la cifra entera, y
+  en el `<style>` `body:has(.beat) .gancho.solo-portada { opacity: 0 !important; visibility: hidden !important; }`.
+- **Una pantalla que se oscurece**: `background: rgba(0,0,0,.6)`, nunca `opacity` en el CSS: `data-como="fundido"` la lleva a 1
+  y sale negra del todo.
+- Sin macOS la portada sale del medio del gancho, sin medir la cara: mira fotogramas en las pausas entre frases (boca
+  cerrada) y **enséñale 3 o 4 estilos de titular antes de cerrarla**.
 
 ## Lo que rompe el render de HyperFrames si se olvida
 

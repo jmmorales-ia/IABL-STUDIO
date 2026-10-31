@@ -11,7 +11,7 @@ EXE = ".exe" if WINDOWS else ""
 
 # En Windows, Python lee y escribe en la codificación local (cp1252) salvo que se le diga lo contrario: los
 # acentos y los emojis de las skills se romperían. Se vuelve a lanzar a sí mismo en modo UTF-8 (los lanzadores
-# .cmd ya lo traen puesto: esto es la red de seguridad si alguien llama a formula.py a mano).
+# .cmd ya lo traen puesto: esto es la red de seguridad si alguien llama a iabl.py a mano).
 if WINDOWS and sys.flags.utf8_mode == 0:
     os.environ["PYTHONUTF8"] = "1"
     sys.exit(subprocess.call([sys.executable, "-X", "utf8", *sys.argv]))

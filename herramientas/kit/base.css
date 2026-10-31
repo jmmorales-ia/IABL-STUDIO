@@ -1,5 +1,5 @@
 /* Piezas de IABL Studio: titular arriba, gráfico debajo, subtítulos, frase de énfasis abajo. Todo en px sobre
-   un lienzo de 1080x1920. Colores y letras: marca/marca.json (formula.py los pone en #root). Ver piezas.md. */
+   un lienzo de 1080x1920. Colores y letras: marca/marca.json (iabl.py los pone en #root). Ver piezas.md. */
 * { box-sizing: border-box; }
 html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #000;
   font-family: var(--letra), system-ui, sans-serif; color: #fff; -webkit-font-smoothing: antialiased; }

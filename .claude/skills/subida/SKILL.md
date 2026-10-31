@@ -109,7 +109,7 @@ Avísale de que vas a usar su Chrome. En `https://business.facebook.com` con su 
 2. **El vídeo, del disco**. La herramienta de subir ficheros acepta hasta 10 MB por llamada: si pesa más, pártelo
    (`split -b 9000000 <video.mp4> trozos/<nombre>.mp4.part_`), pega `herramientas/tiktok.js` (sirve igual: añade un
    campo para los trozos), sube cada trozo y júntalos con `__assemble('<nombre>.mp4')`. Comprueba que el tamaño es
-   el del original.
+   el del original y, mejor, la huella SHA-256 del fichero montado: la subida de trozos puede dar error y haber entrado.
 3. **La portada**: «Portada» → subir `<nombre>.portada.png`. Nunca el fotograma que elige solo: suele salir a medio
    parpadeo.
 4. **El pie**: el de Instagram; en Facebook, el de las otras redes si es distinto.
@@ -122,7 +122,7 @@ Avísale de que vas a usar su Chrome. En `https://business.facebook.com` con su 
 
 1. Abre `https://www.tiktok.com/tiktokstudio/upload?from=webapp`, espera 4 s, fija el pie que debe llevar
    (`window.__pie = "…"`) y pega `herramientas/tiktok.js` con la herramienta de JavaScript.
-2. Busca el campo «formula trozos del video» (`find`) y sube cada trozo (o el mp4 si pesa menos de 10 MB), **una
+2. Busca el campo «iabl trozos del video» (`find`) y sube cada trozo (o el mp4 si pesa menos de 10 MB), **una
    llamada por fichero**. Luego `await __up('<nombre>.mp4', <bytes del original>)`: comprueba el tamaño y espera a
    «Cargado».
 3. 🚨 **La portada** (`<nombre>.portada.png`) con «Editar portada», antes de programar: un vídeo programado ya no se

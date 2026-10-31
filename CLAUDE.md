@@ -17,8 +17,8 @@ para instalar y configurar.
   `referentes.md`, `lecciones.md`. Si `marca.json` sigue sin nombre, propón /empezar.
 - **Cada corrección suya va a su sitio, con su fecha**: lo del guion a `marca/voz.md`, lo de la edición a
   `marca/estilo.md`, lo de subir a `marca/subida.md`. Así no hay que repetirlo.
-- Las herramientas, en `herramientas/`. El lanzador es `herramientas/formula` (Mac, Linux y Git Bash de Windows) o
-  `herramientas\formula.cmd` (PowerShell y CMD de Windows). Si no existe `herramientas/.venv`, primero
+- Las herramientas, en `herramientas/`. El lanzador es `herramientas/iabl` (Mac, Linux y Git Bash de Windows) o
+  `herramientas\iabl.cmd` (PowerShell y CMD de Windows). Si no existe `herramientas/.venv`, primero
   `python herramientas/instalar.py` (`python3` en Mac y Linux). Los vídeos, en `videos/`.
 - 🚨 **Nada sale sin su sí**: publicar, programar o mandar algo se deja listo y se pulsa solo con su permiso para ESE
   vídeo. Nunca escribas sus contraseñas.

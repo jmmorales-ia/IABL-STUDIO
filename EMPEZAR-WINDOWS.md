@@ -19,7 +19,7 @@ O a mano:
 
 ```powershell
 python herramientas\instalar.py
-herramientas\formula.cmd --help
+herramientas\iabl.cmd --help
 ```
 
 Si Chrome no se descarga solo, apunta a uno que ya tengas:
@@ -37,6 +37,6 @@ $env:HYPERFRAMES_BROWSER_PATH = "C:\Program Files\Google\Chrome\Application\chro
 ## Lo que cambia respecto al original
 
 - `instalar.py` sustituye a `instalar.sh` (sin bash ni enlaces simbólicos, que en Windows piden administrador).
-- `formula.cmd`, `formula-guion.cmd` y `formula-estudiar.cmd` para PowerShell y CMD.
+- `iabl.cmd`, `iabl-guion.cmd` y `iabl-estudiar.cmd` para PowerShell y CMD.
 - Codificación UTF-8 forzada, para que los acentos no se rompan.
-- La portada no mide los ojos fuera de macOS: eliges el segundo con `formula portada NOMBRE --en S`.
+- La portada no mide los ojos fuera de macOS: eliges el segundo con `iabl portada NOMBRE --en S`.

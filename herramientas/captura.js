@@ -1,4 +1,4 @@
-/* Saca la captura de una web para ponerla en el reel como prueba. Lo llama `formula captura`,
+/* Saca la captura de una web para ponerla en el reel como prueba. Lo llama `iabl captura`,
    con el Chrome sin ventana que ya trae HyperFrames: no toca tu Chrome ni tu sesión.
 
    La página se abre estrecha, como en un móvil, para que el texto salga grande, y a doble

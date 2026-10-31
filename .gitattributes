@@ -1,6 +1,6 @@
 # Los scripts de shell necesitan saltos de linea LF aunque el repo se clone en Windows
 *.sh text eol=lf
-herramientas/formula text eol=lf
-herramientas/formula-guion text eol=lf
-herramientas/formula-estudiar text eol=lf
+herramientas/iabl text eol=lf
+herramientas/iabl-guion text eol=lf
+herramientas/iabl-estudiar text eol=lf
 *.cmd text eol=crlf

@@ -34,7 +34,7 @@ python herramientas/instalar.py      # en Mac y Linux, python3. Vale para Window
 - Instala dentro de `herramientas/` (nada en el sistema): Whisper para transcribir en local, ffmpeg, HyperFrames (el
   render) con su Chrome sin ventana, iconos y letras. ~2,5 GB con el modelo de Whisper, que baja la primera vez que
   transcribe.
-- Comprueba: `herramientas/formula --help` (en PowerShell o CMD: `herramientas\formula.cmd --help`).
+- Comprueba: `herramientas/iabl --help` (en PowerShell o CMD: `herramientas\iabl.cmd --help`).
 
 Para subir desde su Chrome hace falta **Claude in Chrome** (la extensión oficial de Anthropic) instalada y con sesión en
 Instagram, Meta Business Suite y TikTok. Si no la tiene, explícale qué es y dónde se instala; sin ella, /subida le deja
@@ -66,7 +66,7 @@ Que añada unas cuantas canciones por tipo (las que suenan en los virales de su 
 Instagram), solo música que pueda usar:
 
 ```bash
-herramientas/formula musica --anadir <fichero o enlace> --tipos utilidad,caso --titulo "…" --artista "…" --desde <segundo>
+herramientas/iabl musica --anadir <fichero o enlace> --tipos utilidad,caso --titulo "…" --artista "…" --desde <segundo>
 ```
 
 `--desde`: el segundo donde la canción suena mejor (donde la usan los virales). Los tipos, en `marca/musica.json`.

@@ -145,14 +145,14 @@ def main():
     for carpeta in ("videos/entrada", "videos/trabajo", "videos/salida", "marca/musica"):
         (AQUI.parent / carpeta).mkdir(parents=True, exist_ok=True)
     if not WINDOWS:
-        for f in ("formula", "formula-guion", "formula-estudiar"):
+        for f in ("iabl", "iabl-guion", "iabl-estudiar"):
             (AQUI / f).chmod(0o755)
 
-    lanzador = r"herramientas\formula.cmd" if WINDOWS else "herramientas/formula"
+    lanzador = r"herramientas\iabl.cmd" if WINDOWS else "herramientas/iabl"
     print(f"\nListo. Prueba: {lanzador} --help")
     print("   La primera transcripción baja el modelo de Whisper (~1,5 GB): tarda un poco, solo esa vez.")
     if sys.platform != "darwin":
-        print("   Fuera de macOS la portada no mide los ojos: elige el segundo con «formula portada NOMBRE --en S».")
+        print("   Fuera de macOS la portada no mide los ojos: elige el segundo con «iabl portada NOMBRE --en S».")
 
 
 if __name__ == "__main__":

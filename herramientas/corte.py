@@ -1,5 +1,5 @@
 """El corte: junta tus clips, transcribe en local (Whisper), quita silencios, muletillas y tomas
-repetidas, y deja el vídeo base sin texto con la voz a −14 LUFS. Lo usa formula.py (preparar, clip)."""
+repetidas, y deja el vídeo base sin texto con la voz a −14 LUFS. Lo usa iabl.py (preparar, clip)."""
 import json
 import math
 import re

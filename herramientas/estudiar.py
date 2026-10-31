@@ -1,6 +1,6 @@
 """Transcribe reels bajados (de tus referentes o el que vas a copiar) y saca las medidas de cada guion.
 
-Uso: herramientas/formula-estudiar <carpeta>
+Uso: herramientas/iabl-estudiar <carpeta>
 <carpeta> lleva una subcarpeta por reel con su v.mp4 (lo baja yt-dlp, ver /guion) y, si quieres comparar,
 vistas.txt («<código> <vistas>» por línea, como sale de herramientas/vistas-rejilla.js).
 Deja transcript.txt y palabras.json en cada una e imprime la tabla. Local, 0 €.

@@ -31,7 +31,7 @@ Todo lo de SKILL.md vale igual (pasos, capturas, portada, sonidos, música); aqu
 - 🚨 **El cierre dice qué comentar sin duda**: la caja grande (`.comentar.grande`) con la palabra tecleándose a
   64 px y el titular «Comenta **X**». Una pegatina «Comenta X» sola no se entiende.
 - **La portada**: el título y, debajo, la animación que empieza con él, ya completa. Si su remate llega más tarde,
-  `formula portada <nombre> --en <un segundo con todo dentro y los ojos abiertos>`.
+  `iabl portada <nombre> --en <un segundo con todo dentro y los ojos abiertos>`.
 
 ## «clip»: el clip de otro arriba
 
@@ -44,7 +44,7 @@ Para reaccionar a lo que ha dicho alguien (un CEO, un pódcast).
 | La costura | La traducción, frase entera mientras suena, como el subtítulo de una película; las claves en tu acento | Nada: tus subtítulos van en el centro |
 | Tú | Abajo, escuchando, sin sonido (`reaccion.mp4`) | Subes de la costura a pantalla entera (0,45 s) y hablas |
 
-1. **El clip**: `herramientas/formula clip <nombre> <url> --pista "Nombre, Empresa"`. Lo baja (como mucho a 1080),
+1. **El clip**: `herramientas/iabl clip <nombre> <url> --pista "Nombre, Empresa"`. Lo baja (como mucho a 1080),
    lo transcribe en su idioma (`fuente.txt`) y saca `fuente.jpg`, un fotograma con una rejilla cada 100 px para medir
    el recorte.
 2. **Qué trozos**: desde lo que pone el contexto hasta **la frase clave, y ahí se corta**: de 10 a 18 s. Fuera el
@@ -52,7 +52,7 @@ Para reaccionar a lo que ha dicho alguien (un CEO, un pódcast).
 3. **El recorte**, mirando `fuente.jpg`: por encima de sus subtítulos quemados, sin los logos del programa y con la
    cara grande.
    ```bash
-   herramientas/formula clip <nombre> x --trozos "4.2-8.95,10.5-11.9,12.0-17.95" --recorte "430,70,1100,662" \
+   herramientas/iabl clip <nombre> x --trozos "4.2-8.95,10.5-11.9,12.0-17.95" --recorte "430,70,1100,662" \
      --reaccion "videos/entrada/0 IMG_….MOV" --desde 1.5
    ```
    Deja `clip.mp4` (sin pausas de más de 0,35 s: en un pódcast, cortar cada 0,12 s se ve a saltos) y `clip.txt`. Desde
@@ -60,7 +60,7 @@ Para reaccionar a lo que ha dicho alguien (un CEO, un pódcast).
 4. 🚨 **Tu toma escuchando** (`--reaccion`, y `--desde` el segundo en que empiezas a mirar): una toma mirando el clip
    en el portátil, sin hablar, con alguna reacción, de lo que dure el clip. Nunca una toma tuya hablando: se te
    vería mover la boca.
-5. **Tu opinión**: tus clips y `formula preparar` como siempre. 🚨 Tiene que acabar atando el clip a lo que piensas:
+5. **Tu opinión**: tus clips y `iabl preparar` como siempre. 🚨 Tiene que acabar atando el clip a lo que piensas:
    qué significa para quien mira y qué hacer con ello.
 6. **El guion**: `<!-- ajustes: estilo=clip sub-y=932 -->`, sus `<!-- claves: … -->` y:
    - el título: `<div class="gancho" data-a="0" data-b="<fin del clip>">El CEO de X sobre<br>trabajar con <span class="acento">IA</span></div>`;
@@ -76,7 +76,7 @@ Para reaccionar a lo que ha dicho alguien (un CEO, un pódcast).
 
 Tres pasos, con tu voz en medio:
 
-1. **Tus clips → el corte, sin voz.** `herramientas/formula vlog <nombre> --clips <carpeta>` hace una hoja por clip
+1. **Tus clips → el corte, sin voz.** `herramientas/iabl vlog <nombre> --clips <carpeta>` hace una hoja por clip
    (`tomas/NN.jpg`: el fotograma k es el segundo k × `cada`). Lee cada hoja y escribe `montaje.json`:
    - **La historia en el orden del día**, de 35 a 60 s.
    - **Un plano nuevo cada 1,2 a 1,8 s.** Solo un selfie hablando a cámara dura más, con `"sonido": true`.
@@ -84,11 +84,11 @@ Tres pasos, con tu voz en medio:
    - Mezcla ángulos: selfie (0,5×, en el coche o andando), primera persona (los pies andando, las manos en el
      teclado, el café), el móvil en la mesa grabándote, pantallas, gente, sitios, el gimnasio, y **un último plano
      que cierra el día** (habitación a oscuras, portátil cerrado).
-   `herramientas/formula vlog <nombre> --montar` → `videos/salida/<nombre>-para-la-voz.mp4`. Dale ese fichero **y una
+   `herramientas/iabl vlog <nombre> --montar` → `videos/salida/<nombre>-para-la-voz.mp4`. Dale ese fichero **y una
    frase de voz propuesta por plano** (corta, en primera persona, lo que enseña el plano) para que la grabe encima
    con sus palabras (CapCut, o una nota de voz con el vídeo sonando).
-2. **Tu voz → la base.** `herramientas/formula vlog <nombre> --voz <fichero>` (`--desde S` si empieza antes del corte).
-3. **Lo demás, como siempre**: el título en `guion.html` (es la portada), `formula musica <nombre> vlog` (y
+2. **Tu voz → la base.** `herramientas/iabl vlog <nombre> --voz <fichero>` (`--desde S` si empieza antes del corte).
+3. **Lo demás, como siempre**: el título en `guion.html` (es la portada), `iabl musica <nombre> vlog` (y
    `musica=musica.wav`), `armar`, `foto`, `render`.
 
 | | Cómo |

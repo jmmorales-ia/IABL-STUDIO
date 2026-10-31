@@ -3,7 +3,7 @@ dicho con otras palabras y en otro orden) y un cierre para todos. De una grabaci
 distintos: A1 es el reel normal y los demás, sus pruebas, una al día. Cinco copias del mismo vídeo con otro titular
 no engañan a Instagram; seis vídeos de verdad, sí.
 
-  formula preparar NOMBRE --piezas "A=0,B=31,C=58,1=90,cierre=301,2=340"
+  iabl preparar NOMBRE --piezas "A=0,B=31,C=58,1=90,cierre=301,2=340"
     cada número, la palabra de crudo.txt (lo que dijiste, sin quitar nada) en que empieza esa pieza.
     → la carpeta es A1 (base.mp4, palabras.json, frases.txt); cada otra combinación, en _combo-B1/…;
       piezas.txt, todas seguidas en el orden A, B, C, 1, 2, cierre, con los tiempos del guion.
@@ -13,7 +13,7 @@ tiempo dentro de su pieza: <!-- pieza B --> … <!-- /pieza -->. construir saca 
 combinación (el de la carpeta, A1, también: no se toca a mano).
 
 Con un solo cuerpo grabado, los otros salen de él, por frases enteras:
-  formula preparar NOMBRE --piezas "…" --cuerpos "2=47-155,163-560;3=47-100,200-560"
+  iabl preparar NOMBRE --piezas "…" --cuerpos "2=47-155,163-560;3=47-100,200-560"
     cada cuerpo nuevo, los tramos del cuerpo 1 que dice y en qué orden (el número de palabra de piezas.txt; uno
     solo, «57», es la frase que empieza ahí). Para recortarlo, deja fuera frases; para una lista, cambia el orden
     de los puntos. Su guion sale solo del de la pieza 1: cada bloque va con su tramo, y el de un tramo quitado, fuera.
@@ -243,8 +243,8 @@ def juntar(videos, destino):
 
 
 def montar(f, dir_, unido, palabras, args):
-    """El final de `formula preparar` con --piezas. Cada pieza se corta sola (_piezas/X.mp4) y cada combinación
-    son sus piezas en fila. `f` es formula.py, por sus ayudas (cortes_sobre_la_voz, escribir_frases…)."""
+    """El final de `iabl preparar` con --piezas. Cada pieza se corta sola (_piezas/X.mp4) y cada combinación
+    son sus piezas en fila. `f` es iabl.py, por sus ayudas (cortes_sobre_la_voz, escribir_frases…)."""
     dur, hechas, tramos_guion, todas, t = f.duracion_de(unido), {}, {}, [], 0.0
     (dir_ / "_piezas").mkdir(exist_ok=True)
     print("3/4 Quitando silencios y muletillas, pieza a pieza…")
